@@ -7,7 +7,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class TwoSumTest {
@@ -17,6 +18,9 @@ public class TwoSumTest {
     public void twoSum(int[] nums, int target, int[] expectedOutPut) {
 
         int[] output = TwoSum.twoSum(nums, target);
+        Arrays.sort(output);
+        assertArrayEquals(expectedOutPut, output);
+        output = TwoSum.twoSumSquareComplexity(nums, target);
         Arrays.sort(output);
         assertArrayEquals(expectedOutPut, output);
     }
